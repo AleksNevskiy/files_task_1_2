@@ -1,7 +1,7 @@
 from pprint import pprint
 import os
 
-path = os.path.join(os.getcwd(), 'recipes.txt')
+# path = os.path.join(os.getcwd(), 'recipes.txt')
 
 
 def recipe_processor(path):
@@ -29,14 +29,14 @@ def get_shop_list_by_dishes(dishes, person_count):
     for i in dishes:
         for j in cook_book[i]:
             if j['ingredient_name'] in res.keys():
-                res[j['ingredient_name']]['quantity'] += int(j['quantity'])
+                res[j['ingredient_name']]['quantity'] += int(j['quantity'])*person_count
             else:
                 res[j['ingredient_name']] = {}
                 res[j['ingredient_name']]['measure'] = j['measure']
                 res[j['ingredient_name']]['quantity'] = int(j['quantity'])*person_count
     return res
 
-pprint(get_shop_list_by_dishes(['Омлет', 'Омлет'], 1))
+pprint(get_shop_list_by_dishes(['Омлет', 'Омлет'], 2))
 
 
 
